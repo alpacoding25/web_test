@@ -1,0 +1,31 @@
+* {
+    font-family: 'Black Han Sans', sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background-image: url(b1.jpg);
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+
+h1{
+    font-size: 60px;
+    margin-top: 40px;
+    margin-bottom: 60px;
+    color: #464646;
+}
+
+.login_form{
+    box-sizing: border-box;
+    width: 500px;
+    margin: 20px auto;
+    padding: 60px;
+
+
+}
+.checkbox{
+    font-size: 13px;
+}
+
