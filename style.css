@@ -6,7 +6,7 @@
 
 body{
     background-image: url(https://images.unsplash.com/photo-1601675029774-487ea85964b5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80);
-    background-size: 100% 100%;
+    background-size: cover 100% 100%;
     background-attachment: fixed;
     background-repeat: no-repeat;
 
