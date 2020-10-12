@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <!-- web title -->
+    <title>에어팟 케이스 쇼핑몰</title>
+
+    <!-- meta tag -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <!-- 구글 폰트 -->
+    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+
+    <style type="text/css">
+        * {
+            font-family: 'Gugi', cursive;
+        }
+
+        .wrap {
+            width: 500px;
+            margin: auto;
+        }
+
+        .img {
+            background-image: url(https://image.msscdn.net/images/goods_img/20190312/980558/980558_1_500.jpg);
+            background-size: cover;
+            background-position: center;
+            width: 500px;
+            height: 500px;
+        }
+
+        .info {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .h1, h5 {
+            display: inline;
+        }
+
+        .order1 {
+            text-align: center;
+        }
+
+        .rate {
+            color: red;
+        }
+
+    </style>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: "https://api.manana.kr/exchange/rate.json",
+                data: {},
+                success: function (response) {
+                    let nowRate = response[1]["rate"];
+                    $('#exRate').text(nowRate);
+                }
+            })
+
+        });
+
+
+        function order1() {
+            let name = $('#order_name').val();
+            let count = $('#order_count').val();
+            let address = $('#order_address').val();
+            let phone = $('#order_phone').val();
+
+            if (name == '') {
+                alert('이름을 입력하세요!');
+                return;
+            } else if (count == '--수량을 선택하세요--') {
+                alert('수량을 선택하세요!');
+                return;
+            } else if (address == '') {
+                alert('주소를 입력하세요!');
+                return;
+            } else if (phone == '') {
+                alert('전화번호를 입력하세요!');
+                return;
+            }
+            alert('주문이 완료되었습니다.');
+        }
+
+
+    </script>
+</head>
+
+<body>
+<div class="wrap">
+    <div class="img"></div>
+    <div class="info">
+        <h1>에어팟 케이스를 판매합니다</h1>
+        <h5>가격: 15,000원/ 개</h5>
+        <p>"개" 깜찍한 에어팟 케이스 "시바" 케이스를 판매합니다!!</p>
+        <p class="rate">달러-원 환율 : <sapn id="exRate">1000원</sapn> </p>
+        <!-- 주문자 이름 수량 주소 전화번호 -->
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">주문자 이름</span>
+            </div>
+            <input type="text" class="form-control" aria-describedby="basic-addon1" id="order_name">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="order_count">수량</label>
+            </div>
+            <select id="order_count" class="custom-select">
+                <option selected>--수량을 선택하세요--</option>
+                <option value="1">1개</option>
+                <option value="2">2개</option>
+                <option value="3">3개</option>
+                <option value="4">4개</option>
+            </select>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">주소</span>
+            </div>
+            <input type="text" class="form-control" aria-describedby="basic-addon1" id="order_address">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">전화번호</span>
+            </div>
+            <input type="text" class="form-control" aria-describedby="basic-addon1" id="order_phone">
+        </div>
+    </div>
+    <!-- 주문하기 버튼 -->
+    <div class="order1">
+        <button onclick="order1()" type="button" class="btn btn-secondary">주문하기</button>
+    </div>
+</div>
+</body>
+</html>
+
+
